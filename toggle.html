@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <button onclick="func()">clcik</button>
+  <p class="text">acertou</p>
+
+  <div class="caixa"></div>
+<button id="animar">Animar</button>
+
+
+   <!-- bolhas -->
+   <div class="bolhas">
+    <span style="--i:21"></span>
+    <span style="--i:7"></span>
+    <span style="--i:31"></span>
+    <span style="--i:50"></span>
+    <span style="--i:20"></span>
+    <span style="--i:10"></span>
+    <span style="--i:25"></span>
+    <span style="--i:15"></span>
+    <span style="--i:63"></span>
+    <span style="--i:45"></span>
+    <span style="--i:18"></span>
+    <span style="--i:29"></span>
+    <span style="--i:71"></span>
+    <span style="--i:4"></span>
+    <span style="--i:62"></span>
+    <span style="--i:30"></span>
+    <span style="--i:12"></span>
+    <span style="--i:16"></span>
+    <span style="--i:15"></span>
+    <span style="--i:14"></span>
+    <span style="--i:45"></span>
+    <span style="--i:2"></span>
+    <span style="--i:21"></span>
+    <span style="--i:7"></span>
+    <span style="--i:40"></span>
+    <span style="--i:59"></span>
+    <span style="--i:20"></span>
+  </div>
+
+
+  <style>
+
+      /* bolhas */
+  .bolhas {
+    position: absolute;
+    display: flex;
+    height: 100%;
+  }
+  /* @media (max-width: 600px){
+      .todo {
+       padding:10px;
+      }
+  
+      button {
+        font-size: .8em;
+        padding: 3px;
+      }
+      input {
+        padding: 8px;
+      }
+  
+      select {
+        padding: 8px;
+      }
+  
+      .todo-container {
+        padding: 0;
+      }
+  
+      i{
+        margin: 10px;
+      }
+  
+  } */
+  .bolhas span {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: #00d9ff;
+    margin: 0 4pc;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px #00d9ff06,
+    0 0 10px #00d9ff,
+    0 0 100px #00d9ff;
+    transition: .2s;
+    opacity: 0;
+    animation: animar 5s calc(200s / var(--i)) linear infinite;
+  }
+  
+  @keyframes animar{
+    0% {
+        transform: translateY(100vh) scale(0); 
+    }
+  
+    10%{
+      opacity: 1;
+    }
+  
+    100%{
+        transform: translateY(-10vh) scale(.7);
+        opacity: 1;
+    }
+  }
+  
+  .bolhas span:nth-of-type(even) {
+    background-color: #ffffff;
+    box-shadow: 0 0 0 10px #ffffff00,
+    0 0 10px #ffffff,
+    0 0 100px #ffffff;
+  }
+
+    /* p {
+      font-size: 3em;
+      animation: ease  2s;
+    }
+
+    .text {
+      color: red;
+    }
+
+    .text-anim {
+      animation: ease animate 2s;
+      transition: .3s;
+    }
+
+    @keyframes deslizar {
+      0% {
+        opacity: 0;
+      }
+    } */
+
+    .caixa {
+  background-color:lightGreen;
+  width:100px;
+  height:100px;
+}
+
+@keyframes deslizar{
+  0%   { margin-left: 0px; }
+  50%  { margin-left: 200px; }
+  100% { margin-left: 0px; }
+}
+
+  </style>
+
+  <script>
+
+    // function func() {
+
+    //   const text = document.querySelector('.text')
+
+      
+    //   function func() {
+    //     text.style.animation = ""
+    //     setTimeout(() => caixa.style.animation = " 1s linear", 5);
+    //   }
+      
+    // }
+
+    const botaoAnimar = document.getElementById("animar");
+        const caixa = document.querySelector(".caixa");
+
+        function func() {
+          console.log('ola')
+        caixa.style.animation = "";
+        setTimeout(() => caixa.style.animation = "deslizar 1s linear", 5);
+    };
+
+  </script>
+
+
+</body>
+</html>

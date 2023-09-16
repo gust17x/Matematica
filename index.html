@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Matematica</title>
+
+</head>
+<body>
+
+    <div class="bolhas">
+        <span style="--i:72">10</span>
+        <span style="--i:19">=</span>
+        <span style="--i:36">*</span>
+        <span style="--i:6">-</span>
+        <span style="--i:7">?</span>
+        <span style="--i:27">x</span>
+        <span style="--i:-99">0</span>
+        <span style="--i:64">1</span>
+        <span style="--i:2">%</span>
+        <span style="--i:96">y</span>
+      </div>
+
+    <div class="container">
+
+
+
+        <div class="initial">
+            <h1>Treine seu raciocinio</h1>
+            <p>Contas geradas aleatoriamente</p>
+            <button onclick="gerar()" class="gerar">Começar</button>
+        </div>
+
+        
+        <h4 class="respost-animation">10</h4>
+        <div class="count-area">
+
+            <div class="placar">
+                <p class="timer">Tempo: 00s</p> <p class="pts">Pontos: 0</p> <p class="pts-err">Erros: 0</p>
+            </div>
+            
+            <h3 class="number"></h3>
+
+            <p><span class="contage"> 30</span> </p>
+
+            <div class="count-div">
+                <input type="number" name="" id="" class="input-res">
+                <button onclick="verify()" class="btn-res">Confirmar</button> 
+            </div>
+            
+             <button onclick="stoped()" class="stoped">Parar</button>
+
+        </div>
+
+        <p class="res-animation"></p>
+
+    </div>
+
+    <div class="results-final">
+
+        <h1>RESULTADOS FINAIS</h1>
+
+        <h3 class="res-final-pts"></h3>
+        <h3 class="res-final-pts-error"></h3>
+        <h3 class="res-final-count-gerada"></h3>
+        <h3 class="res-final-time"></h3>
+        <h3 class="res-final-hits"></h3>
+
+        <form action="">
+           <button type="submit">Recomeçar</button> 
+        </form>
+        
+    </div>
+
+    <script src="script.js" defer></script>
+
+</body>
+</html>
