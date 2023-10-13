@@ -22,7 +22,6 @@ body {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    
   }
 
 .initial {
@@ -69,6 +68,40 @@ body {
   margin: 0;
 }
 
+.score {
+  color: #fff;
+}
+
+@keyframes scoreAnim {
+
+  0% {
+    color: rgb(4, 175, 4);
+  }
+  70% {
+    color: #fff;
+  }
+
+  100% {
+    color: #fff;
+  }
+}
+
+.scoreError {
+  color: #fff;
+}
+
+@keyframes scoreErrAnim {
+  0% {
+    color: red;
+  }
+  70% {
+    color: #fff;
+  }
+
+  100% {
+    color: #fff;
+  }
+}
 .timer {
   animation: timerAnim ease-in-out 2s;
   /* transition-delay: 1s; */
@@ -103,8 +136,8 @@ body {
     font-size: 16px;
     background-color: #111;
     box-shadow: 0 0 0 10px #00d9ff06,
-    0 0 4px #00d9ff,
-    0 0 20px #00d9ff;
+    0 0 2px #00d9ff,
+    0 0 17px #00d9ff;
     color: white;
     border: none;
     border-radius: 20px;
@@ -129,7 +162,7 @@ body {
     outline: 0;
     text-align: center;
     font-size: 1.5em;
-    width: 15%;
+    width: 20%;
     transition: .3s;
     background: none;
   }
@@ -174,6 +207,33 @@ body {
     }
   }
   
+  /* jump */
+  .btn-jump {
+    display: none;
+    transition: 1s;
+    animation: jumpAnimation 5s ease-in-out;
+    position: absolute;
+    left: 5%;
+  }
+
+  @keyframes jumpAnimation {
+    0% {
+      /* transform: translateX(-50px); */
+      opacity: 0;
+    }
+    5% {
+      opacity: 1;
+    }
+
+    97% {
+      opacity: 1;
+    }
+
+    100% {
+      /* transform: translateX(0px); */
+      opacity: 0;
+    }
+  }
 
   .res-animation {
     transition: 1s;
@@ -218,8 +278,6 @@ body {
       transform: scale(0);
     }
 
-    10% {}
-
     10% {
       opacity: 1;
       transform: scale(1.5);
@@ -241,16 +299,6 @@ body {
     font-size: 16px;
     margin-bottom: 10px;
   }
-
-  /* @keyframes contageAniim {
-
-    20% {
-      color: red;
-    }
-    100% {
-      color: white;
-    }
-  } */
 
   .res-verify {
     margin-bottom: 10px;
@@ -283,9 +331,12 @@ body {
     padding: 5px 0;
   }
 
+  .results-final h5 {
+    font-size: .7em;
+  }
+
   /* bolhas */
   .bolhas {
-    overflow: hidden;
     position: absolute;
     display: flex;
     justify-content: space-around;
@@ -371,3 +422,5 @@ body {
     0 0 10px #ffffff,
     0 0 100px #ffffff;
   }
+
+  

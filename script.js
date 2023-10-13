@@ -16,6 +16,7 @@ const number = document.querySelector('.number')
 const inputRes = document.querySelector('.input-res')
 const btnRes = document.querySelector('.btn-res')
 const pts = document.querySelector('.pts')
+const btnJump = document.querySelector('.btn-jump')
 
 const container = document.querySelector('.container')
 const resFinalPts = document.querySelector('.res-final-pts')
@@ -33,6 +34,8 @@ const resAnimation = document.querySelector('.res-animation')
 
     var interrompeFunc = true;
 
+    var stopTimerTwo = true;
+
     var veryTimerTwo = true;
 
     var very = true;
@@ -46,68 +49,70 @@ const resAnimation = document.querySelector('.res-animation')
     var sum = 0;
 
     function gerar() {
-
         number.style.animation = "";
         setTimeout(() => number.style.animation = "shakeN .5s ease-in-out")
 
         const numRandomOne = Math.floor(Math.random() * 10)
         const numRandomTwo = Math.floor(Math.random() * 10)
-        const numRandomTree = Math.floor(Math.random() * 10)
 
-        number.innerText = `${numRandomOne} + ${numRandomTwo} + ${numRandomTree}`
+        number.innerText = `${numRandomOne} + ${numRandomTwo}`
 
-        sum = numRandomOne + numRandomTwo + numRandomTree;
+        sum = numRandomOne + numRandomTwo;
 
         if(randomWan) { 
             console.log('Nivel 1')
+            //console.log('nivel 1: 0 a 10')
 
-            const numRandomOne = Math.floor(Math.random() * 10)
+            resAnimation.innerText = "Nivel 1"
+
+            const numRandomOne = Math.floor(Math.random() * 20)
             const numRandomTwo = Math.floor(Math.random() * 10)
-            const numRandomTree = Math.floor(Math.random() * 10)
 
-            number.innerText = `${numRandomOne} + ${numRandomTwo} + ${numRandomTree}`
+            number.innerText = `${numRandomOne} + ${numRandomTwo}`
 
-            sum = numRandomOne + numRandomTwo + numRandomTree;
+            sum = numRandomOne + numRandomTwo;
 
         }
 
         if(randomTwo) {
             console.log('random 2')
+            // console.log('nivel 2: 0 a 15')
 
-            resAnimation.innerText = "Random 2"
+            resAnimation.innerText = "Nivel 2"
 
             resAnimation.style.animation = "";
             setTimeout(() => resAnimation.style.animation = "resAnim 2s linear", 1);
 
 
-            const numRandomOne = Math.floor(Math.random() * 10)
+            const numRandomOne = Math.floor(Math.random() * 20)
             const numRandomTwo = Math.floor(Math.random() * 10)
-            const numRandomTree = Math.floor(Math.random() * 10)
+            const numRandomTree = Math.floor(Math.random() * 20)
 
-            number.innerText = `${numRandomOne} - ${numRandomTwo} * ${numRandomTree}`
+            number.innerText = `${numRandomOne} + ${numRandomTwo} - ${numRandomTree}`
 
-            sum = numRandomTwo * numRandomTree - numRandomOne;
+            sum = numRandomTwo + numRandomTree - numRandomOne;
 
         }
 
         if(randomTree) {
             console.log('random 3')
+            // console.log('nivel 3: 0 a 20')
 
-            resAnimation.innerText = "Random 2"
+            resAnimation.innerText = "Nivel 3"
 
             resAnimation.style.animation = "";
             setTimeout(() => resAnimation.style.animation = "resAnim 2s linear", 1);
 
-            const numRandomOne = Math.floor(Math.random() * 15)
-            const numRandomTwo = Math.floor(Math.random() * 15)
+            const numRandomOne = Math.floor(Math.random() * 11)
+            const numRandomTwo = Math.floor(Math.random() * 20)
             const numRandomTree = Math.floor(Math.random() * 15)
+            const numRandomFor = Math.floor(Math.random() * 20)
 
-            number.innerText = `${numRandomOne} + ${numRandomTwo} * ${numRandomTree}`
+            number.innerText = `${numRandomOne} * ${numRandomTwo} - ${numRandomTree} + ${numRandomFor}`
 
-            sum = numRandomOne + numRandomTwo * numRandomTree;
+            sum = numRandomOne * numRandomTwo - numRandomTree + numRandomFor;
 
         }
-        
 
         initial.style.display = 'none'
         countArea.style.display = 'block'
@@ -124,76 +129,149 @@ const resAnimation = document.querySelector('.res-animation')
 
     }
 
+
+    let valSkiped = 2
+
     function veryRandomCount() {
 
-        if(valpts < 5) {
+        if(valpts < 1) {
             //console.log('nivel 1: 0 a 10')
             randomWan = true
+
+            if(randomWan) {
+                valSkiped = 2
+                console.log('vl skiped nv 1', valSkiped)
+            }
+
         }
 
-        if(valpts >= 10) {
+        if(valpts >= 2) {
            // console.log('nivel 2: 0 a 15')
             randomWan = false
             randomTwo = true
-           
+
+            if(randomTwo) {
+                valSkiped = 4
+                console.log('vl skiped nv 2', valSkiped)
+            }
+
+            console.log('skip:', valSkiped)
+
         }   
 
-        if(valpts >= 25) {
+        if(valpts >= 3) {
            // console.log('nivel 3: 0 a 20')
             randomTwo = false
             randomTree = true
-            
+
+            if(randomTree) {
+                valSkiped = 5
+                console.log('vl skiped nv 3', valSkiped)
+            }
+
         } 
 
     }
 
-    function timertwo() {
+     
+    // função pra pular a conta
 
-        t2 = 30
-        let timeRes
+    validSkipJump = true
+    function funcJump() {
+
+        contage.style.opacity = '0'
+
+        valSkiped--
+
+        if(valSkiped == 0 ) {
+            console.log('valSkiped:', valSkiped)
+            validSkipJump = false
+        }
+
+        btnJump.style.display = 'none'
+
+        gerar()
 
         if(randomWan) {
-            t2 = 30
+            t2 = 20
         }
 
         if(randomTwo) {
-            t2 = 50
+            t2 = 30
         }
 
         if(randomTree) {
-            t2 = 70
+            t2 = 45
         }
+
+        console.log('voce tem:', valSkiped, 'pulos')
+
+    }
+
+
+    function timertwo() {
+
+        t2 = 20
+        let timeRes
+
+        if(randomWan) {
+            t2 = 20
+        }
+
+        if(randomTwo) {
+            t2 = 30
+        }
+
+        if(randomTree) {
+            t2 = 45
+        }
+
+    
         
-        setInterval(() => {
+        twoInterval = setInterval(() => {
             t2--
+            
+            if(validSkipJump) {
+                if(t2 <= 10) {
+                    btnJump.style.display = 'block'
+                }
+                if(t2 <= 5) {
+                    btnJump.style.display = 'none'
+                }
+            }
+
+
 
             if(t2 <= 10) {
-
                 contage.innerText = `${t2}`
                 contage.style.opacity = 1
-                // contage.style.color = 'red'
                 contage.style.animation = "";
                 setTimeout(() => contage.style.animation = "contageAniim .3s ease-in-out", 900);
             }
 
+            
+
             if(t2 === 0) {
+                ptsErr.style.animation = ""
+                setTimeout(() => ptsErr.style.animation = "scoreErrAnim 1s linear", .1);
                 contage.style.opacity = 0
                 console.log('atualizando conta')
                 t2 = timeRes
                 
                 if(randomWan) {
-                    t2 = 30
+                    t2 = 20
                 }
 
                 if(randomTwo) {
-                    t2 = 50
+                    t2 = 30
                 }
 
                 if(randomTree) {
-                    t2 = 70
+                    t2 = 45
                 }
 
                 gerar()
+                scoreError()
                 countGer()
             } 
 
@@ -225,54 +303,33 @@ const resAnimation = document.querySelector('.res-animation')
         }, 1000)
     }
 
-    function stoped() {
-
-        if(valpts <= 0) {
-            console.log("val pts:", valpts)
-            console.log("val ptsErr:", valptsErr)
-            resAnimation.innerText = "Acerte pelomenos uma questão"
-
-            resAnimation.style.animation = "";
-            setTimeout(() => resAnimation.style.animation = "resAnim 2s linear", 1);
-        }else {
-
-        interrompeFunc = false
-
-        console.log('acertou ', valpts, ' pontos em ', t1, ' segundos')
-
-        resFinalPts.innerText = `Acertou: ${valpts}`;
-        ptsError.innerText = `Errou: ${valptsErr}`
-
-        resFinalTime.innerText = `Tempo gasto: ${t1} segundos`;
-        const resFinalMedia = valpts * 100 / valCountGer
-        resFinalHits.innerText = `Media de acerto: ${Math.round(resFinalMedia)}%`
-
-        container.style.display = 'none'
-        resFin.style.display = 'flex'
-
-        }
-    }
+    // function jump
 
     // pegar val do input e verificar resposta
 
-    valCountGer = 0 
+    let valCountGer = 0 
     function countGer() {
         valCountGer++ 
         countGerad.innerText = `Contas geradas: ${valCountGer}`
     }
 
-    valpts = 0
+    let valpts = 0
     function score() {
         valpts++
         pts.innerText = `Pontos: ${valpts}`
+        pts.style.animation = ""
+        setTimeout(() => pts.style.animation = "scoreAnim 1s linear", .1);
         console.log('pontos:', valpts)
         veryRandomCount()
+
     }
 
-    valptsErr = 0
+    let valptsErr = 0
     function scoreError() {
         valptsErr++
         ptsErr.innerText = `Erros: ${valptsErr}`
+        ptsErr.style.animation = ""
+        setTimeout(() => ptsErr.style.animation = "scoreErrAnim 1s linear", .1);
     }
 
 
@@ -280,18 +337,20 @@ const resAnimation = document.querySelector('.res-animation')
 
         const valInput = inputRes.value;
 
-        fadeIn = true
+        fadeIn = true;
 
         if(inputRes.value == "") {
             resAnimation.innerText = "Preencha o campo"
 
             resAnimation.style.animation = "";
-            setTimeout(() => resAnimation.style.animation = "resAnim 2s linear", 1);
+            setTimeout(() => resAnimation.style.animation = "resAnim 2s linear", .1);
 
             inputRes.focus()
 
         }else if(valInput == sum) {
-//gu
+
+            btnJump.style.display = 'none'
+
             respostAnimation.innerText = valInput
             respostAnimation.style.animation = "";
             respostAnimation.style.color = 'green'
@@ -301,21 +360,19 @@ const resAnimation = document.querySelector('.res-animation')
             score()
             gerar()
             countGer()
-
-           
             
             contage.style.opacity = 0
             
             if(randomWan) {
-                t2 = 30
+                t2 = 20
             }
 
             if(randomTwo) {
-                t2 = 50
+                t2 = 30
             }
 
             if(randomTree) {
-                t2 = 70
+                t2 = 45
             }
 
             // gerar palavras aleatorias
@@ -326,7 +383,7 @@ const resAnimation = document.querySelector('.res-animation')
             //console.log('certo', sum)
 
             resAnimation.style.animation = "";
-            setTimeout(() => resAnimation.style.animation = "resAnim 1.2s linear", 1);
+            setTimeout(() => resAnimation.style.animation = "resAnim 1.2s linear", .1);
 
             inputRes.focus()
 
@@ -354,9 +411,38 @@ const resAnimation = document.querySelector('.res-animation')
 
     }
 
-    
-    
+    function stoped() {
+
+        
+
+        if(valpts <= 0) {
+            console.log("val pts:", valpts)
+            console.log("val ptsErr:", valptsErr)
+            resAnimation.innerText = "Acerte pelomenos uma questão"
+
+            resAnimation.style.animation = "";
+            setTimeout(() => resAnimation.style.animation = "resAnim 2s linear", 1);
+        }else {
+
+        clearInterval(twoInterval)
+
+        interrompeFunc = false
+
+        console.log('acertou ', valpts, ' pontos em ', t1, ' segundos')
+
+        resFinalPts.innerText = `Acertou: ${valpts}`;
+        ptsError.innerText = `Errou: ${valptsErr}`
+
+        resFinalTime.innerText = `Tempo gasto: ${t1} segundos`;
+        const resFinalMedia = valpts * 100 / valCountGer
+        resFinalHits.innerText = `Media de acerto: ${Math.round(resFinalMedia)}%`
+
+        container.style.display = 'none'
+        resFin.style.display = 'flex'
+
+        }
+
+    }
 
 
 // gerar palavras erradas aleatorias
-
