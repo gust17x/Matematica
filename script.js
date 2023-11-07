@@ -2,25 +2,36 @@
 const initial = document.querySelector('.initial')
 const countArea = document.querySelector('.count-area')
 const resFin = document.querySelector('.results-final')
+const container = document.querySelector('.container')
 
-//
+// placar
 const timerText = document.querySelector('.timer')
-const stopedd = document.querySelector('.stoped')
-const contage = document.querySelector('.contage')
+const pts = document.querySelector('.pts')
 const ptsErr = document.querySelector('.pts-err')
+
+// btns
+const btnJump = document.querySelector('.btn-jump')
+const btnRes = document.querySelector('.btn-res')
+const stopedd = document.querySelector('.stoped')
+
+
+// texts
+const contage = document.querySelector('.contage')
+const number = document.querySelector('.number')
+
+
+// texts results final
 const ptsError = document.querySelector('.res-final-pts-error')
 const countGerad = document.querySelector('.res-final-count-gerada')
 const resFinalHits = document.querySelector('.res-final-hits')
-
-const number = document.querySelector('.number')
-const inputRes = document.querySelector('.input-res')
-const btnRes = document.querySelector('.btn-res')
-const pts = document.querySelector('.pts')
-const btnJump = document.querySelector('.btn-jump')
-
-const container = document.querySelector('.container')
 const resFinalPts = document.querySelector('.res-final-pts')
 const resFinalTime = document.querySelector('.res-final-time')
+
+const inputRes = document.querySelector('.input-res')
+
+
+
+
 const div = document.querySelector('.div')
 
 const respostAnimation = document.querySelector('.respost-animation') 
@@ -63,10 +74,8 @@ const resAnimation = document.querySelector('.res-animation')
             console.log('Nivel 1')
             //console.log('nivel 1: 0 a 10')
 
-            resAnimation.innerText = "Nivel 1"
-
             const numRandomOne = Math.floor(Math.random() * 20)
-            const numRandomTwo = Math.floor(Math.random() * 10)
+            const numRandomTwo = Math.floor(Math.random() * 20)
 
             number.innerText = `${numRandomOne} + ${numRandomTwo}`
 
@@ -78,19 +87,19 @@ const resAnimation = document.querySelector('.res-animation')
             console.log('random 2')
             // console.log('nivel 2: 0 a 15')
 
-            resAnimation.innerText = "Nivel 2"
+            // resAnimation.innerText = "Nivel 2"
 
-            resAnimation.style.animation = "";
-            setTimeout(() => resAnimation.style.animation = "resAnim 2s linear", 1);
+            // resAnimation.style.animation = "";
+            // setTimeout(() => resAnimation.style.animation = "resAnim 2s linear", 1);
 
 
             const numRandomOne = Math.floor(Math.random() * 20)
             const numRandomTwo = Math.floor(Math.random() * 10)
             const numRandomTree = Math.floor(Math.random() * 20)
 
-            number.innerText = `${numRandomOne} + ${numRandomTwo} - ${numRandomTree}`
+            number.innerText = `${numRandomOne} + ${numRandomTwo} + ${numRandomTree}`
 
-            sum = numRandomTwo + numRandomTree - numRandomOne;
+            sum = numRandomTwo + numRandomTree + numRandomOne;
 
         }
 
@@ -98,10 +107,10 @@ const resAnimation = document.querySelector('.res-animation')
             console.log('random 3')
             // console.log('nivel 3: 0 a 20')
 
-            resAnimation.innerText = "Nivel 3"
+            // resAnimation.innerText = "Nivel 3"
 
-            resAnimation.style.animation = "";
-            setTimeout(() => resAnimation.style.animation = "resAnim 2s linear", 1);
+            // resAnimation.style.animation = "";
+            // setTimeout(() => resAnimation.style.animation = "resAnim 2s linear", 1);
 
             const numRandomOne = Math.floor(Math.random() * 11)
             const numRandomTwo = Math.floor(Math.random() * 20)
@@ -131,13 +140,17 @@ const resAnimation = document.querySelector('.res-animation')
 
 
     let valSkiped = 2
-
+    validSkipJump = true
     function veryRandomCount() {
+
+        // if(valSkiped > 0) {
+        //     btnJump.style.display = 'block'
+        // }
 
         if(valpts < 1) {
             //console.log('nivel 1: 0 a 10')
             randomWan = true
-
+            resAnimation.innerText = "Nivel 1"
             if(randomWan) {
                 valSkiped = 2
                 console.log('vl skiped nv 1', valSkiped)
@@ -145,14 +158,37 @@ const resAnimation = document.querySelector('.res-animation')
 
         }
 
-        if(valpts >= 2) {
+        if(valpts >= 7) {
            // console.log('nivel 2: 0 a 15')
             randomWan = false
             randomTwo = true
 
+            if(valSkiped == 0) {
+                validSkipJump = false
+                console.log('validSkipJump', validSkipJump)
+            }else {
+               validSkipJump = true 
+               console.log('validSkipJump', validSkipJump,)
+            }
+
+            console.log('validSkipJump', validSkipJump)
+
             if(randomTwo) {
-                valSkiped = 4
+                resAnimation.innerText = "Nivel 2"
+                valSkiped = 15
                 console.log('vl skiped nv 2', valSkiped)
+                if(valSkiped == 0) {
+                    validSkipJump = false
+                    console.log('validSkipJump', validSkipJump)
+                }else {
+                   validSkipJump = true 
+                   console.log('validSkipJump', validSkipJump,)
+                }
+
+                resAnimation.innerText = `${valSkiped} Chances`
+                resAnimation.style.animation = "";
+                resAnimation.style.animation = "resAnim 2s linear";
+
             }
 
             console.log('skip:', valSkiped)
@@ -165,9 +201,21 @@ const resAnimation = document.querySelector('.res-animation')
             randomTree = true
 
             if(randomTree) {
+                resAnimation.innerText = "Nivel 3"
                 valSkiped = 5
                 console.log('vl skiped nv 3', valSkiped)
+                if(valSkiped == 0) {
+                    validSkipJump = false
+                    console.log('validSkipJump', validSkipJump)
+                }else {
+                   validSkipJump = true 
+                   console.log('validSkipJump', validSkipJump,)
+                }
             }
+
+            resAnimation.innerText = `${valSkiped} Chances`
+            resAnimation.style.animation = "";
+            resAnimation.style.animation = "resAnim 2s linear";
 
         } 
 
@@ -176,20 +224,30 @@ const resAnimation = document.querySelector('.res-animation')
      
     // função pra pular a conta
 
-    validSkipJump = true
+    
     function funcJump() {
 
         contage.style.opacity = '0'
 
         valSkiped--
 
-        if(valSkiped == 0 ) {
-            console.log('valSkiped:', valSkiped)
-            validSkipJump = false
+        resAnimation.innerText = `${valSkiped} Chances`
+        resAnimation.style.animation = "";
+        resAnimation.style.animation = "resAnim 2s linear";
+
+        if(valSkiped === 1) {
+            resAnimation.innerText = `${valSkiped} Chance`
         }
 
-        btnJump.style.display = 'none'
+        if(valSkiped === 0 ) {
+            resAnimation.innerText = "Chances esgotadas"
+            resAnimation.style.animation = "resAnim 2s linear";
 
+            validSkipJump = false
+
+        }
+
+    
         gerar()
 
         if(randomWan) {
@@ -201,13 +259,13 @@ const resAnimation = document.querySelector('.res-animation')
         }
 
         if(randomTree) {
-            t2 = 45
+            t2 = 50
         }
 
+        btnJump.style.display = 'none'
         console.log('voce tem:', valSkiped, 'pulos')
 
     }
-
 
     function timertwo() {
 
@@ -223,7 +281,7 @@ const resAnimation = document.querySelector('.res-animation')
         }
 
         if(randomTree) {
-            t2 = 45
+            t2 = 50
         }
 
     
@@ -234,6 +292,7 @@ const resAnimation = document.querySelector('.res-animation')
             if(validSkipJump) {
                 if(t2 <= 10) {
                     btnJump.style.display = 'block'
+                    console.log('oi btnjump', valSkiped)
                 }
                 if(t2 <= 5) {
                     btnJump.style.display = 'none'
@@ -267,7 +326,7 @@ const resAnimation = document.querySelector('.res-animation')
                 }
 
                 if(randomTree) {
-                    t2 = 45
+                    t2 = 50
                 }
 
                 gerar()
@@ -282,6 +341,8 @@ const resAnimation = document.querySelector('.res-animation')
         console.log(t2)
         
     } 
+
+    
 
     function timer() {
         t1 = 0;
@@ -372,7 +433,7 @@ const resAnimation = document.querySelector('.res-animation')
             }
 
             if(randomTree) {
-                t2 = 45
+                t2 = 50
             }
 
             // gerar palavras aleatorias
@@ -443,6 +504,3 @@ const resAnimation = document.querySelector('.res-animation')
         }
 
     }
-
-
-// gerar palavras erradas aleatorias
