@@ -74,8 +74,8 @@ const resAnimation = document.querySelector('.res-animation')
             console.log('Nivel 1')
             //console.log('nivel 1: 0 a 10')
 
-            const numRandomOne = Math.floor(Math.random() * 100)
-            const numRandomTwo = Math.floor(Math.random() * 100)
+            const numRandomOne = Math.floor(Math.random() * 50)
+            const numRandomTwo = Math.floor(Math.random() * 50)
 
             number.innerText = `${numRandomOne} + ${numRandomTwo}`
 
