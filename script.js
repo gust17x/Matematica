@@ -63,8 +63,8 @@ const resAnimation = document.querySelector('.res-animation')
         number.style.animation = "";
         setTimeout(() => number.style.animation = "shakeN .5s ease-in-out")
 
-        const numRandomOne = Math.floor(Math.random() * 10)
-        const numRandomTwo = Math.floor(Math.random() * 10)
+        const numRandomOne = Math.floor(Math.random() * 20)
+        const numRandomTwo = Math.floor(Math.random() * 20)
 
         number.innerText = `${numRandomOne} + ${numRandomTwo}`
 
@@ -74,8 +74,8 @@ const resAnimation = document.querySelector('.res-animation')
             console.log('Nivel 1')
             //console.log('nivel 1: 0 a 10')
 
-            const numRandomOne = Math.floor(Math.random() * 20)
-            const numRandomTwo = Math.floor(Math.random() * 20)
+            const numRandomOne = Math.floor(Math.random() * 100)
+            const numRandomTwo = Math.floor(Math.random() * 100)
 
             number.innerText = `${numRandomOne} + ${numRandomTwo}`
 
@@ -94,12 +94,12 @@ const resAnimation = document.querySelector('.res-animation')
 
 
             const numRandomOne = Math.floor(Math.random() * 20)
-            const numRandomTwo = Math.floor(Math.random() * 10)
+            const numRandomTwo = Math.floor(Math.random() * 20)
             const numRandomTree = Math.floor(Math.random() * 20)
 
-            number.innerText = `${numRandomOne} + ${numRandomTwo} + ${numRandomTree}`
+            number.innerText = `${numRandomOne} * ${numRandomTwo} - ${numRandomTree}`
 
-            sum = numRandomTwo + numRandomTree + numRandomOne;
+            sum = numRandomTwo * numRandomTree - numRandomOne;
 
         }
 
@@ -112,14 +112,14 @@ const resAnimation = document.querySelector('.res-animation')
             // resAnimation.style.animation = "";
             // setTimeout(() => resAnimation.style.animation = "resAnim 2s linear", 1);
 
-            const numRandomOne = Math.floor(Math.random() * 11)
+            const numRandomOne = Math.floor(Math.random() * 30)
             const numRandomTwo = Math.floor(Math.random() * 20)
-            const numRandomTree = Math.floor(Math.random() * 15)
-            const numRandomFor = Math.floor(Math.random() * 20)
+            const numRandomTree = Math.floor(Math.random() * 10)
+            const numRandomFor = Math.floor(Math.random() * 100)
 
-            number.innerText = `${numRandomOne} * ${numRandomTwo} - ${numRandomTree} + ${numRandomFor}`
+            number.innerText = `${numRandomOne} - ${numRandomTwo} + ${numRandomTree} * ${numRandomFor}`
 
-            sum = numRandomOne * numRandomTwo - numRandomTree + numRandomFor;
+            sum = numRandomOne - numRandomTwo + numRandomTree * numRandomFor;
 
         }
 
